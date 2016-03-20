@@ -1,0 +1,26 @@
+﻿@using MyDog.Models
+@model List<MyDog.Models.Cani>
+
+@{
+    ViewBag.Title = "LISTA CANI IN ARCHIVIO";
+}
+
+<h2>Di seguito la lista cani aggiornata ad @DateTime.Now</h2>
+
+<table>
+    <tr>
+        <td>NOME RAZZA</td>
+        <td>DESCRIZIONE RAZZA</td>
+        <td>CATEGORIA</td>
+    </tr>
+    @foreach (Cani cane in Model)
+    {
+        <tr>
+            <td>@cane.Nome</td>
+            <td>@cane.Descrizione</td>
+            <td>@Html.ActionLink("Vai a categoria", "Index", "Categorie", new { idCategoriaCane = @cane.IdCategoria }, null )</td>
+        </tr>
+    }
+</table>
+
+
