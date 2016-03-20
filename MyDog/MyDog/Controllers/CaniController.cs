@@ -27,27 +27,36 @@ namespace MyDog.Controllers
         //    return View();
         //}
 
-        // GET: Cani/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        //GET: Cani/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
 
         // POST: Cani/Create
-        //[HttpPost]
-        //public ActionResult Create(FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add insert logic here
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            try
+            {
+                Cani cane = new Cani();
+                cane.Nome = "ppp";
+                cane.Descrizione = "kkkk";
+                cane.IdCategoria = 12;
+                using (DOG_DBEntities db = new DOG_DBEntities())
+                {
+                    db.Cani.Add(cane);
+                    db.SaveChanges();
+                }
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                return View();
+            }
+        }
 
         // GET: Cani/Edit/5
         //public ActionResult Edit(int id)
