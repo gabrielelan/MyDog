@@ -35,14 +35,11 @@ namespace MyDog.Controllers
 
         // POST: Cani/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Cani cane)
         {
             try
             {
-                Cani cane = new Cani();
-                cane.Nome = "ppp";
-                cane.Descrizione = "kkkk";
-                cane.IdCategoria = 12;
+                cane.IdCategoria = 1;
                 using (DOG_DBEntities db = new DOG_DBEntities())
                 {
                     db.Cani.Add(cane);
